@@ -1,0 +1,222 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'inter', sans-serif;
+    font-size: 0.9em;
+    overflow: hidden;
+    background: url('bg/forest_cabin.png') no-repeat center/cover fixed;
+    background-color: lightgray; /* 기본 배경색 */
+    /* Flexbox를 사용해 자식 요소를 정렬 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-image 0.5s ease-in-out;
+}
+.character-image{
+    position: fixed;
+    z-index: 0;
+    width: 100%;
+    height:100%;
+    background: url('character/esmeralda.png') no-repeat center/cover fixed;
+}
+:root {
+    color-scheme: light only;
+}
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center; /* 로딩 이미지와 입력 필드 수직 정렬 */
+    flex-grow: 1; /* 남은 공간을 모두 차지 */
+  }
+.loading-gif {
+    position: absolute;
+    left: -5px; /* input 내부의 오른쪽에 배치 */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px; /* GIF 크기 */
+    height: 30px;
+}
+.container {
+    width: 393px;
+    
+    height: 100vh;
+    position: relative;
+    /* background: #000; */
+    
+}
+
+.bottom-container {
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 16px 16px;
+    
+    /* padding-bottom: 50px; */
+
+}
+
+.name-dialogue {
+    background: #fefefeCC;
+    border-radius: 24px;
+    padding: 28px 18px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.name {
+    display: inline-block;
+    background: #3b55e9;
+    color: #fefefe;
+    padding: 10px 24px;
+    border-radius: 24px;
+    /* font-weight: bold; */
+    width: fit-content;
+    position: relative;
+    top:30px;
+    left:10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dialogue {
+    color: #333;
+    line-height: 1.5;
+    height:200px;
+    overflow-y: auto;
+}
+
+.status {
+    background: #fefefe;
+    border-radius: 24px;
+    padding: 6px 16px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.status-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow {
+    color: #666;
+    font-size: 1.2em;
+}
+.blurry-background {
+    position: fixed;
+    padding: 20px; /* 필요에 따라 값 조정 */
+    top: 0;
+    left: 0;
+    width: 110vw; /* 뷰포트 너비 */
+    height: 110vh; /* 뷰포트 높이 */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 3;
+    display: none;
+    transition: background-image 0.5s ease-in-out;
+}
+.HistoryCloseButton{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 88%;
+    top:19%;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 5;
+    display: none;
+}
+.history-container{
+    overflow-y: auto;
+    position: relative;
+    width: 80%;
+    height: 60%;
+    z-index: 4;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: flex-start;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #313131;
+    border-radius: 24px;
+    padding: 16px 16px;
+    padding-top: 40px;
+    display: none;
+    gap: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+.input-box {
+    background: white;
+    border: 1px solid #313131;
+    border-radius: 24px;
+    padding: 6px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9em;
+    outline: none;
+    position: relative;
+    left:-10px;
+    /* width:100%; */
+}
+input[type="text"]:focus {
+    outline: none;
+    border: none;
+}
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.buttons button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    padding: 4px 8px;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons button:hover {
+    color: #4661FF;
+}
+.navi{
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    width: fit-content;
+    margin-right: 10px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+.top-container{
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+}
