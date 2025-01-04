@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+ 
+    <title>새로운 여정 시작하기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            padding: 20px;
+        }
+        .category-bar {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        .category-bar button {
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .category-bar button:hover {
+            background-color: #d0d0d0;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .card-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .bottom-title{
+            font-size: 12px;
+            position: absolute;
+            bottom: 100px;}
+        .bottom-container {
+            position: absolute;
+            bottom: 10px;
+            display: flex;
+            overflow-x: scroll;
+            z-index: 2;
+        }
+        .history-card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 5px;
+        }
+        .history-card img{
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .history-content{
+            
+        }
+        .history-title{font-size: 8px;}
+        .history-description{font-size: 8px;}
+    </style>
+</head>
+<body>
+  
+    <div class="container">
+        <div class="category-bar">
+            <button id="logoutbtn">LogOut</button>
+            <button>판타지</button>
+            <button>디스토피아</button>
+            <button>육성</button>
+        </div>
+        <div class="title">새로운 여정 시작하기</div>
+        <div class="card" onclick="location.href='/chat?newchat=true'">
+            <img src="../static/card_kingdom.png" alt="나의 왕국 부활기">
+            <div class="card-content">
+                <div class="card-title">나의 왕국 부활기</div>
+                <div class="card-description">
+                    에스테리아의 세계에 오신 것을 환영합니다.<br>
+                    당신은 멸망한 에테루멘 왕국의 마지막 왕족입니다.<br>
+                    왕국을 재건하기 위한 여정을 시작하십시오.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="../static/card_dystopia.png" alt="지구가 멸망한 후">
+            <div class="card-content">
+                <div class="card-title">지구가 멸망한 후</div>
+                <div class="card-description">
+                    핵전쟁 이후의 지구는 기계문명이 발달한다.<br>
+                    부족해진 인간 대신 사이보그들이 만들어지는데<br>
+                    그녀들과 반란군이 된 로봇들과의 전쟁이 시작된다.
+                </div>
+            </div>
+        </div>
+        <div class="bottom-title">최근 진행한 여정</div>
+        <div class="bottom-container"></div>
+    </div>
+    <script type="module">
+        var uid = "{{uid}}";
+        var history_list = JSON.parse('{{history_list|tojson}}');
+        console.log(uid,history_list);
+
+        const bottomContainer = document.querySelector(".bottom-container");
+        history_list.forEach((history) => {
+            const card = document.createElement("div");
+            card.classList.add("history-card");
+            card.innerHTML = `
+            <img onclick="location.href='/load_chat?chat_room_id=${history.create_time}'" src="static/${history.image}" alt="${history.title}" style="width: 50px; height: 50px;border-radius: 50%;">
+            <div class="history-content">
+                <div class="history-title">${history.title.length > 5 ? history.title.substring(0, 5) + '..' : history.title}</div>
+                <div class="history-description">${history.create_time.substring(2, 8)}</div>
+            </div>
+            `;
+            bottomContainer.appendChild(card);
+        });
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+        
+        import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCwJodY83c12cRzGAs4QXr4P7dmphHwRTU",
+            authDomain: "fit-it-analytics.firebaseapp.com",
+            projectId: "fit-it-analytics",
+            storageBucket: "fit-it-analytics.appspot.com",
+            messagingSenderId: "403285719660",
+            appId: "1:403285719660:web:23105be5ae490067847649",
+            measurementId: "G-9Z1M2D08YJ"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const provider = new GoogleAuthProvider();
+        const auth = getAuth();
+        document.getElementById("logoutbtn").addEventListener('click', ()=>{
+            console.log("click logout");
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                console.log("User signed out.");
+            }).catch((error) => {
+                // An error happened.
+                console.error("Error signing out: ", error);
+            });
+
+            onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // 사용자가 로그인되어 있습니다.
+                console.log("User is logged in:", user);
+            } else {
+                // 사용자가 로그아웃되었습니다.
+                console.log("User is logged out.");
+                // 로그아웃 후 UI 업데이트 로직 추가
+            }
+            });
+
+        });
+       
+    </script>
+</body>
+
+</html>

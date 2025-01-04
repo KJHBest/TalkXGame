@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+ 
+    <title>Talk X Game</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: #111;
+        }
+        .logo{
+            position:absolute;
+            top:40%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .logo img{
+            width: 100%;
+            max-width: 400px;
+        }
+        #button_container{
+            width: 100%;
+            position: fixed;
+            bottom: 40px;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        #tryforfreebtn{
+            display: flex;
+            justify-content: center;
+            background-color: #F6FB1A;
+            max-width: 328px;
+            width: 85%;
+            color: #111;
+            padding: 16px 0px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        #googleLogin{
+            padding-top: 20px;
+            padding-bottom: 56px;
+        }
+        #googleLogin img{
+            height: 40px;
+            border-radius: 5px;
+        }
+        #loginBG {
+            position: fixed;
+            bottom: 0;
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="loginBG">
+        <source src="static/LoginBG.mp4" type="video/mp4">
+    </video>
+<div class="logo">
+    <!-- <img src="static/MLG_Logo001.jpg" > -->
+    
+</div>
+<div id="button_container">
+    <div id="googleLogin"><img src="static/googleloginfull.png"></div>
+</div>
+
+<script type="module">
+    // https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+    
+    import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    const firebaseConfig = {
+        apiKey: "AIzaSyCwJodY83c12cRzGAs4QXr4P7dmphHwRTU",
+        authDomain: "fit-it-analytics.firebaseapp.com",
+        projectId: "fit-it-analytics",
+        storageBucket: "fit-it-analytics.appspot.com",
+        messagingSenderId: "403285719660",
+        appId: "1:403285719660:web:23105be5ae490067847649",
+        measurementId: "G-9Z1M2D08YJ"
+    };
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const provider = new GoogleAuthProvider();
+
+    // Initialize Firebase Authentication and get a reference to the service
+    const auth = getAuth(app);
+    auth.languageCode = 'ko';
+    document.getElementById("googleLogin").addEventListener('click', ()=>{
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            console.log(result.user);
+            // IdP data available using getAdditionalUserInfo(result)
+            // API에 UID 정보 보내기
+            const apiEndpoint = 'https://fititstyle.com/loginAuth'; // 실제 API URL로 변경하세요.
+            const payload = {
+                uid: result.user.uid,
+                email: result.user.email // 필요하다면 추가 정보도 포함 가능
+            };
+
+            fetch(apiEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('API 요청 실패: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('API 응답:', data);
+                // 성공적으로 로그인했으므로 다른 페이지로 이동
+                window.location.href = '/lobby'; // 실제 이동할 페이지 URL로 변경하세요.
+            })
+            .catch(error => {
+                console.error('API 요청 중 에러 발생:', error);
+            });
+            // ...
+        }).catch((error) => {
+            console.log(error);
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+    });
+</script>
+</body>
+</html>

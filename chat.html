@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+
+    <title>캐릭터 대화창</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="character-image"></div>
+    <div class="blurry-background"></div>
+    <div class="container">
+        <div class="top-container">
+            <a href="/" style="color: inherit; text-decoration: none;"><div class="navi">Home</div></a>
+           <div class="navi" onclick="printHistory()">History</div>
+        </div>
+        <button class="HistoryCloseButton" onclick="closeHistory()">X</button>
+        <div class="history-container"></div>
+        
+        <div class="bottom-container">
+            <div class="name">나의 왕국 부활기</div>
+            <div class="name-dialogue">
+                <div class="dialogue">
+                    <p>에스테리아의 세계에 오신 것을 환영합니다.</p>
+                    <p>당신은 멸망한 에테루멘 왕국의 마지막 왕족입니다.</p>
+                    <p>현재는 시종 한니발과 함께 숲속 오두막에서 은둔생활을 하고있습니다</p>
+                    <p>왕국을 재건하기 위한 여정을 시작하십시요.</p>
+                </div>
+            </div>
+            <div class="status">
+                <div class="status-content">
+                    <div class="status-text">💖HP: 100/100 💎MP: 50/50</div>
+                    
+                    <div class="buttons">
+                        <button class="close">›</button>
+                    </div>
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-container">
+                    <input id="input_prompt" type="text" placeholder="대화를 입력해주세요 예) 안녕, 반가워">
+                    <img src="static/spinner.gif" alt="로딩 중" class="loading-gif" id="loadingGif" style="display: none;">
+                </div>
+                <div class="buttons">
+                    <button class="rocket">✨</button>
+                    <!-- <button class="menu">☰</button> -->
+                    <button class="next" onclick="onClickSend()">›</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var chatRoomId = "{{ chat_room_id }}";
+        const bottomContent = document.querySelector(".bottom-container");
+        const viewportHeight = window.innerHeight;
+        const contentRect = bottomContent.getBoundingClientRect();
+        const bottomOffset = viewportHeight - contentRect.bottom;
+        const loadingGif = document.getElementById('loadingGif');
+        if (bottomOffset < 20) {
+            bottomContent.style.bottom = `${20 - bottomOffset}px`;
+        }
+       // chatRoomId = '20250101_164235';
+        if (typeof chatRoomId !== 'undefined' && chatRoomId !== null && chatRoomId !== '') {
+            console.log("chatRoomId",chatRoomId)
+            fetch('/start', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ chatRoomId: chatRoomId  })
+            })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('네트워크 응답이 올바르지 않습니다');
+            }
+            return response.json();
+            })
+            .then(data => {
+                //TODO:대화내용 복원하기. 히스토리 및 배경이미지,캐릭터이미지,상태창
+                const history_text = document.querySelector(".history-container");
+                console.log('서버로부터 받은 데이터:', data);
+                rawText = data.buffer;
+                const lines = rawText.split("\n");
+                console.log(lines);
+                var character ="";
+                var place = "";
+                var lastMessage = "";
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i];
+                    if(line.includes("Human:")) {
+                        const idx = line.indexOf(":");
+                        if (idx !== -1) {
+                            history_text.innerHTML += `<span style="color: red;">${line.substring(idx + 1)}</span><br>`;
+                        }
+                    }else if(line.includes("AI:")) {
+                        // SKIP
+                        lastMessage="";
+                        const matches = line.match(/\[(.+?)\]\s\[(.+?)\]/);
+                       
+                        if (matches) {
+                            character = matches[1];
+                            place = matches[2];
+                            const nametag = document.querySelector(".name");
+                            nametag.innerHTML = character;
+                        }
+                    }else{
+                        const formattedText = formatText(line).replace(/\n/g, '<br>');
+                        history_text.innerHTML += formattedText;
+                        lastMessage+= formattedText+"<br>";
+                    }
+                };
+                const imgpath = getPlaceImg(place);
+                if (imgpath != "") {
+                    document.body.style.backgroundImage = `url(${imgpath})`;
+                }
+                const imgpathchar = getCharacterImg(character);
+                if (imgpathchar != "") {
+                    const containerbg = document.querySelector(".character-image");
+                    containerbg.style.background = `url(${imgpathchar}) no-repeat center/cover fixed`;
+                }
+                
+                const dialogue_text = document.querySelector(".dialogue");
+                dialogue_text.innerHTML = "";
+                let index = 0;
+                function typeWriter() {
+                    if (index < lastMessage.length) {
+                        dialogue_text.innerHTML = lastMessage.substring(0, index + 1);
+                        index++;
+                        setTimeout(typeWriter, 5); // Adjust delay as needed
+                    }
+                }
+                typeWriter();
+            })
+        } else {
+            navigator.sendBeacon('/start');    
+        }
+        
+        
+        window.addEventListener('beforeunload', function () {
+            navigator.sendBeacon('/end');  // 서버에 세션 종료 요청
+        });
+        const historyContainer = document.querySelector(".history-container");
+        const blur_background = document.querySelector(".blurry-background");
+        const closeButton = document.querySelector(".HistoryCloseButton");
+
+        function closeHistory() {
+            console.log('close');
+            historyContainer.style.opacity = '0';
+            blur_background.style.opacity = '0';
+            closeButton.style.opacity = '0';
+            setTimeout(function() {
+                blur_background.style.display = 'none';
+                historyContainer.style.display = 'none';
+                closeButton.style.display = 'none';
+            }, 200);
+        };
+
+        function printHistory() {
+            historyContainer.style.opacity = '0';
+            blur_background.style.opacity = '0';
+            closeButton.style.opacity = '0';
+            blur_background.style.display = 'flex';
+            historyContainer.style.display = 'flex';
+            closeButton.style.display = 'flex';
+            setTimeout(function() {
+                historyContainer.style.opacity = '1';
+                blur_background.style.opacity = '1';
+                closeButton.style.opacity = '1';
+                
+            }, 200);
+
+            
+        }
+        /**
+         * 텍스트를 받아 따옴표로 둘러싸인 부분은 그대로, 
+         * 그렇지 않은 부분은 gray색으로 변경하여 다시 반환
+         * @param {string} text - 변환할 텍스트
+         * @returns {string} - 변환된 텍스트
+         */
+        function formatText(text) {
+            // 정규표현식을 사용하여 따옴표로 둘러싸인 부분과 그렇지 않은 부분을 분리
+            // text를 따옴표로 둘러싸인 부분과 그렇지 않은 부분으로 나눔
+            // 예) "이 부분은 따옴표로 둘러싸여 있습니다." 일반 텍스트
+            //     => ["", "이 부분은 따옴표로 둘러싸여 있습니다.", ""]
+            const parts = text.split(/(“.*?”|".*?")/).filter(Boolean);
+            // 각 부분을 처리
+            const formattedParts = parts.map(part => {
+                console.log(part);
+                if (part.includes('"') || part.includes('“') || part.includes('”')) {
+                    // 따옴표로 둘러싸인 부분은 그대로 유지
+                    return part;
+                } else {
+                    // 일반 텍스트는 gray색으로 변경
+                    return `<span style="color: gray;">${part}</span>`;
+                }
+            });
+            
+            // 처리된 부분들을 다시 하나의 문자열로 결합
+            return formattedParts.join('');
+        }
+        document.getElementById("input_prompt").addEventListener("keydown", function (event) {
+        // Enter 키 확인 (키 코드: 13)
+        if (event.key === "Enter") {
+            onClickSend(); // 함수 실행
+        }
+        });
+      
+        function onClickSend(){
+            const textToSend = document.getElementById("input_prompt");
+            const history_text = document.querySelector(".history-container");
+            history_text.innerHTML += `<span style="color: red;">${textToSend.value}</span><br><br>`;
+            var prompt_input_text = textToSend.value;
+            textToSend.value = " ";
+            loadingGif.style.display = 'block'; // 로딩 GIF 표시
+            if (!window.matchMedia("(pointer: fine)").matches) {
+                textToSend.blur(); // 입력창에서 포커스를 해제하여 키보드 닫기
+            }
+            fetch('/generate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ user_input: prompt_input_text })
+            })
+            .then(response => {
+            if (!response.ok) {
+                throw new Error('네트워크 응답이 올바르지 않습니다');
+            }
+            return response.json();
+            })
+            .then(data => {
+                textToSend.value="";
+                console.log('서버로부터 받은 데이터:', data);
+                // 여기서 받은 데이터를 처리합니다
+                loadingGif.style.display = 'none';
+                
+                const dialogue_text = document.querySelector(".dialogue");
+                
+                rawText = data.data.text
+                const lines = rawText.split("\n");
+                const firstLine = lines[0];
+                const matches = firstLine.match(/\[(.+?)\]\s\[(.+?)\]/);
+                var character ="";
+                var place = "";
+                if (matches) {
+                    character = matches[1];
+                    place = matches[2];
+                    const nametag = document.querySelector(".name");
+                    nametag.innerHTML = character;
+                }
+                console.log("character:", character, "place:", place);
+                
+                var rawText = lines.slice(1).join("\n");
+               
+                console.log('rawText',rawText);
+                const formattedText = formatText(rawText).replace(/\n/g, '<br>');
+                
+                let index = 0;
+                dialogue_text.innerHTML = "";
+
+                function typeWriter() {
+                    if (index < formattedText.length) {
+                        dialogue_text.innerHTML = formattedText.substring(0, index + 1);
+                        index++;
+                        setTimeout(typeWriter, 5); // Adjust delay as needed
+                    }
+                }
+                typeWriter();
+                
+                history_text.innerHTML += formattedText;
+                // status
+                const stat_text = document.querySelector(".status-text")
+                let result = "";
+                Object.entries(data.char_state).forEach(entry => {
+                    console.log(entry);
+                    const symbol = entry[1].first_appearance ? `[${entry[0]}]` : "";
+                    result+=symbol;
+                    //result.push(`${entry[0]}: ${symbol}`);
+                });
+                stat_text.innerHTML = "💖HP: 100/100 💎MP: 50/50 <br>발견한 인물 :"+result
+                //textToSend.focus();
+                //
+                const imgpath = getPlaceImg(place);
+                if (imgpath != "") {
+                    document.body.style.backgroundImage = `url(${imgpath})`;
+                }
+                const imgpathchar = getCharacterImg(character);
+                if (imgpathchar != "") {
+                    const containerbg = document.querySelector(".character-image");
+                    containerbg.style.background = `url(${imgpathchar}) no-repeat center/cover fixed`;
+                }
+            })
+            .catch(error => {
+            console.error('fetch 작업 중 오류 발생:', error);
+            });
+
+
+        }
+        function getPlaceImg(place) {
+            switch (place) {
+                case "숲속 오두막":
+                    return "static/bg/forest_cabin.png";
+                case "적사자 성":
+                    return "static/bg/ruins_of_red_lion.png";
+                case "라거스 용병단":
+                    return "static/bg/lagerus_mercenary_camp.png";
+                case "세개의 탑":
+                    return "static/bg/three_towers.png";
+                case "세 개의 탑":
+                    return "static/bg/three_towers.png";
+                case "미켈라 성수":
+                    return "static/bg/michela_tree.png";
+                case "녹트럴 성":
+                    return "static/bg/noctrul_castle.png";
+                case "녹트럴 성 지하 세계":
+                    return "static/bg/noctrul_underworld.png";
+                default:
+                    return "";
+            }
+        }
+        function getCharacterImg(character) {
+            var characterList =["한니발","라거스","라니","블랙드래곤","녹트럴 황제","에스메랄다","말레니아","라단","네크로멘서"];
+            var reg = new RegExp(characterList.join("|"), "i");
+            var match = character.match(reg);
+            console.log(match);
+            console.log(match[0]);
+            switch (match[0]) {
+                case "한니발":
+                    return "static/character/hannibal.png";
+                case "라거스":
+                    return "static/character/ragus.png";
+                case "라니":
+                    return "static/character/rani.png";
+                case "달의왕녀 라니":
+                    return "static/character/rani.png";
+                case "블랙드래곤":
+                    return "static/character/blackdragon.png";
+                case "녹트럴 황제":
+                    return "static/character/emperer.png";
+                case "에스메랄다":
+                    return "static/character/esmeralda.png";
+                case "말레니아":
+                    return "static/character/malenia.png";
+                case "부패의 여신 말레니아":
+                    return "static/character/malenia.png";
+                case "라단":
+                    return "static/character/radan.png";
+                case "장군 라단":
+                    return "static/character/radan.png";
+                case "네크로멘서":
+                    return "static/character/necromencer.png";
+                default:
+                    return "";
+            }
+        }
+    </script>
+</body>
+</html>
