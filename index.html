@@ -115,7 +115,7 @@
             console.log(result.user);
             // IdP data available using getAdditionalUserInfo(result)
             // API에 UID 정보 보내기
-            const apiEndpoint = 'https://fititstyle.com/loginAuth'; // 실제 API URL로 변경하세요.
+            const apiEndpoint = 'http://fititstyle.com/loginAuth:8088'; // 실제 API URL로 변경하세요.
             const payload = {
                 uid: result.user.uid,
                 email: result.user.email // 필요하다면 추가 정보도 포함 가능
