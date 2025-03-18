@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "농심 신라면 (120g)",
+      "originalPrice": 1400,
+      "salePrice": 700,
+      "promotion": "1+1",
+      "category": "식품",
+      "imageUrl": "https://your-github-pages-url/images/product1.jpg",
+      "stores": ["GS25", "CU"],
+      "startDate": "2025-03-01",
+      "endDate": "2025-03-31"
+    },
+    {
+      "id": "2",
+      "name": "코카콜라 (500ml)",
+      "originalPrice": 2100,
+      "salePrice": 1400,
+      "promotion": "2+1",
+      "category": "음료",
+      "imageUrl": "https://your-github-pages-url/images/product2.jpg",
+      "stores": ["GS25", "7eleven"],
+      "startDate": "2025-03-01",
+      "endDate": "2025-03-31"
+    }
+  ],
+  "stores": {
+    "GS25": {
+      "name": "GS25",
+      "shortName": "GS",
+      "color": "#00A650",
+      "logoUrl": "https://your-github-pages-url/images/gs25.png"
+    },
+    "CU": {
+      "name": "CU",
+      "shortName": "CU", 
+      "color": "#652C8F",
+      "logoUrl": "https://your-github-pages-url/images/cu.png"
+    }
+  }
+}
