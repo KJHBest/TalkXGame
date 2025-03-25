@@ -1,0 +1,40 @@
+{
+  "id": "star_adventure_101",
+  "title": "Journey to the Stars",
+  "author": "Alex Cosmos",
+  "year": 2022,
+  "coverImage": "https://picsum.photos/id/42/300/400",
+  "rating": 4.8,
+  "category": "sci-fi",
+  "ageGroup": "8-12",
+  "contents": [
+    {
+      "content": "When Nina found a star map in her grandmother's attic, she never expected it would light up and show her the way to an adventure beyond the sky.",
+      "image_url": "https://picsum.photos/id/43/800/600"
+    },
+    {
+      "content": "The map glowed brighter at night, projecting constellations onto Nina's ceiling. One night, a beam of starlight shot from the map and created a staircase outside her window.",
+      "image_url": "https://picsum.photos/id/44/800/600"
+    },
+    {
+      "content": "Nina climbed the staircase, which led higher and higher until she reached a small planetoid inhabited by a talking telescope named Galileo.",
+      "image_url": "https://picsum.photos/id/45/800/600"
+    },
+    {
+      "content": "'Welcome, Star Explorer,' said Galileo. 'Your grandmother left this map for you to find. She was once the protector of the celestial pathways, and now that role passes to you.'",
+      "image_url": "https://picsum.photos/id/46/800/600"
+    },
+    {
+      "content": "Nina learned that the stars were actually portals to different worlds, and some were beginning to dim. If they went out completely, those worlds would be cut off forever.",
+      "image_url": "https://picsum.photos/id/47/800/600"
+    },
+    {
+      "content": "With Galileo as her guide, Nina began her mission to rekindle the fading stars. Each night she would climb the staircase and visit a new world, learning its stories and helping to solve its problems.",
+      "image_url": "https://picsum.photos/id/48/800/600"
+    },
+    {
+      "content": "Back on Earth, Nina's parents thought she was simply dreaming. But her grandmother would smile knowingly when Nina told her about the latest world she had saved and the friends she had made among the stars.",
+      "image_url": "https://picsum.photos/id/49/800/600"
+    }
+  ]
+}

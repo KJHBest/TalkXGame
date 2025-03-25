@@ -1,0 +1,32 @@
+{
+  "id": "door_island_123",
+  "title": "Story of Door Island",
+  "author": "Robert Louis Stevenson",
+  "year": 2025,
+  "coverImage": "https://picsum.photos/id/24/300/400",
+  "rating": 4.7,
+  "category": "fantasy",
+  "ageGroup": "7-10",
+  "contents": [
+    {
+      "content": "Once upon a time, there was a door island. The island was full of doors. The doors were of all shapes and sizes. Some were big, some were small. Some were made of wood, some were made of metal.",
+      "image_url": "https://picsum.photos/id/25/800/600"
+    },
+    {
+      "content": "But all the doors had one thing in common. They all led to different places. Some led to other islands, some led to the mainland. Some led to the past, some led to the future.",
+      "image_url": "https://picsum.photos/id/26/800/600"
+    },
+    {
+      "content": "Some led to happiness, some led to sorrow. But no one knew where all the doors led. And no one knew who had made the doors.",
+      "image_url": "https://picsum.photos/id/27/800/600"
+    },
+    {
+      "content": "The doors had always been there. And they would always be there. And so the people of the island lived in peace and harmony.",
+      "image_url": "https://picsum.photos/id/28/800/600"
+    },
+    {
+      "content": "They knew that no matter what happened, there would always be a door to open. And so they went about their lives, opening doors and discovering new worlds. And they were happy.",
+      "image_url": "https://picsum.photos/id/29/800/600"
+    }
+  ]
+}

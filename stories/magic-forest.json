@@ -1,0 +1,36 @@
+{
+  "id": "magic_forest_456",
+  "title": "The Magic Forest",
+  "author": "Clara Wintergreen",
+  "year": 2023,
+  "coverImage": "https://picsum.photos/id/29/300/400",
+  "rating": 4.9,
+  "category": "adventure",
+  "ageGroup": "5-8",
+  "contents": [
+    {
+      "content": "In a forest where the trees whispered secrets, there lived a small fox with bright orange fur. Every day, the fox would explore the forest, listening to the trees talk about faraway lands.",
+      "image_url": "https://picsum.photos/id/30/800/600"
+    },
+    {
+      "content": "One day, the fox found a glowing path that hadn't been there before. 'Where does this lead?' the fox wondered. The trees rustled with excitement.",
+      "image_url": "https://picsum.photos/id/31/800/600"
+    },
+    {
+      "content": "The fox followed the path deep into the heart of the forest. The path grew brighter with every step, until the whole forest was bathed in golden light.",
+      "image_url": "https://picsum.photos/id/32/800/600"
+    },
+    {
+      "content": "Finally, the fox reached a clearing where a magnificent tree stood. Its leaves were made of light, and its roots stretched into a pond that reflected the stars, even in daylight.",
+      "image_url": "https://picsum.photos/id/33/800/600"
+    },
+    {
+      "content": "The fox approached the tree, and as it touched one of the roots with its paw, the tree spoke: 'Welcome, little one. You have found the heart of the forest. Here, all who seek wonder may find it.'",
+      "image_url": "https://picsum.photos/id/34/800/600"
+    },
+    {
+      "content": "From that day forward, the fox became the guardian of the heart tree. And sometimes, when children who love adventure wander into the forest, the fox shows them the glowing path.",
+      "image_url": "https://picsum.photos/id/35/800/600"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "dreaming_whale_789",
+  "title": "The Dreaming Whale",
+  "author": "Morgan Blue",
+  "year": 2024,
+  "coverImage": "https://picsum.photos/id/32/300/400",
+  "rating": 4.5,
+  "category": "fantasy",
+  "ageGroup": "6-9",
+  "contents": [
+    {
+      "content": "Deep in the ocean, there swam a whale who could dream while awake. The whale's dreams would float up to the surface as tiny bubbles, each containing a story.",
+      "image_url": "https://picsum.photos/id/36/800/600"
+    },
+    {
+      "content": "Fishermen who caught these bubbles in their nets would find themselves experiencing the whale's dreams. They would see coral cities, shipwrecks full of treasure, and creatures that no human had ever seen before.",
+      "image_url": "https://picsum.photos/id/37/800/600"
+    },
+    {
+      "content": "One day, a little girl named Mira found one of these bubbles washed up on the shore. It sparkled in the sunlight, changing colors as she turned it in her hand.",
+      "image_url": "https://picsum.photos/id/38/800/600"
+    },
+    {
+      "content": "When Mira picked up the bubble, it didn't pop. Instead, it showed her images of the deep ocean. She saw the dreaming whale, swimming alone, creating stories to share with the world above.",
+      "image_url": "https://picsum.photos/id/39/800/600"
+    },
+    {
+      "content": "Mira realized the whale was lonely. She began collecting shells and putting her own stories into them, then throwing them into the sea for the whale to find.",
+      "image_url": "https://picsum.photos/id/40/800/600"
+    },
+    {
+      "content": "When the whale found Mira's stories, it began to dream about them. New bubbles floated to the surface, filled with both Mira's stories and the whale's dreams. And neither the whale nor Mira felt alone anymore.",
+      "image_url": "https://picsum.photos/id/41/800/600"
+    }
+  ]
+}
