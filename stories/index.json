@@ -1,23 +1,7 @@
 [
     {
-      "id": "door_island",
-      "title": "Story of Door Island"
-    },
-    {
-      "id": "magic_forest",
-      "title": "The Magic Forest"
-    },
-    {
-      "id": "dreaming_whale",
-      "title": "The Dreaming Whale"
-    },
-    {
-      "id": "star_adventure",
-      "title": "Journey to the Stars"
-    },
-    {
-      "id": "brave_rabbit",
-      "title": "The Brave Little Rabbit"
+      "id": "aliceinwonderland",
+      "title": "이상한나라의 엘리스"
     },
     {
         "id": "happyforgiving",
