@@ -196,13 +196,18 @@
         }
       ]
     },
-    {
+   {
       "content": "앨리스는 여왕과 함께 크로켓 게임을 했어요. 망치는 플라밍고였고, 공은 고슴도치였어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/Image_00303_.png",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00303_.png",
           "position-x": 230,
+          "position-y": 200
+        },
+        {
+          "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00303_(1).png",
+          "position-x": 350,
           "position-y": 200
         }
       ]
