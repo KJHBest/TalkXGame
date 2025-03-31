@@ -12,6 +12,7 @@
     {
       "content": "앨리스는 강가에서 언니와 함께 있었어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page01.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page01.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00244_.png",
@@ -23,6 +24,7 @@
     {
       "content": "갑자기 흰 토끼가 주머니시계를 보며 달려갔어요. \"늦었어, 늦었어!\"",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page02.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page02.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00247_.png",
@@ -34,6 +36,7 @@
     {
       "content": "앨리스는 토끼를 따라 토끼굴로 들어갔어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page03.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page03.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00251_.png",
@@ -45,6 +48,7 @@
     {
       "content": "앨리스는 깊고 깊은 구멍 속으로 떨어졌어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page04.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page04.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00240_.png",
@@ -56,6 +60,7 @@
     {
       "content": "앨리스는 이상한 방에 도착했어요. 작은 문이 보였지만 들어갈 수 없었어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page05.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page05.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00257_.png",
@@ -67,6 +72,7 @@
     {
       "content": "\"마셔봐\" 라는 병을 마시자 앨리스는 아주 작아졌어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page06.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page06.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00260_.png",
@@ -78,6 +84,7 @@
     {
       "content": "작아진 앨리스는 눈물 바다에 빠졌어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page07.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page07.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00264_.png",
@@ -89,6 +96,7 @@
     {
       "content": "앨리스는 이상한 동물들과 함께 해변에 도착했어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page08.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page08.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00268_.png",
@@ -100,6 +108,7 @@
     {
       "content": "앨리스는 하얀 토끼의 집으로 갔어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page09.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page09.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00271_.png",
@@ -111,6 +120,7 @@
     {
       "content": "앨리스는 과자를 먹고 너무 커져서 집 안에 갇혔어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page10.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page10.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00275_.png",
@@ -122,6 +132,7 @@
     {
       "content": "앨리스는 애벌레를 만났어요. \"넌 누구니?\" 애벌레가 물었어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/pagwe11.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page11.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00279_.png",
@@ -133,6 +144,7 @@
     {
       "content": "애벌레는 앨리스에게 버섯을 주었어요. 한쪽은 키가 커지고, 다른 쪽은 작아져요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page12.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page12.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00283_.png",
@@ -144,6 +156,7 @@
     {
       "content": "앨리스는 체셔 고양이를 만났어요. 고양이는 사라졌다 나타났다 했어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page13.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page13.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00289_.png",
@@ -155,6 +168,7 @@
     {
       "content": "앨리스는 모자장수의 이상한 찻파티에 참석했어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page14.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page14.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00292_.png",
@@ -166,6 +180,7 @@
     {
       "content": "\"생일 축하해!\" 모자장수와 3월 토끼가 외쳤어요. 하지만 앨리스의 생일이 아니었어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page15.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page15.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00294_.png",
@@ -177,6 +192,7 @@
     {
       "content": "앨리스는 하트 여왕의 정원에 도착했어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page16.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page16.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00297_.png",
@@ -188,6 +204,7 @@
     {
       "content": "\"감옥에 가둬라!\" 하트 여왕이 화를 내며 소리쳤어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page17.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page17.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00331_.png",
@@ -199,6 +216,7 @@
    {
       "content": "앨리스는 여왕과 함께 크로켓 게임을 했어요. 망치는 플라밍고였고, 공은 고슴도치였어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page18.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page18.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00303_.png",
@@ -215,6 +233,7 @@
     {
       "content": "앨리스는 거북이와 그리폰을 만났어요. 그들은 이상한 춤을 췄어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page19.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page19.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00306_.png",
@@ -226,6 +245,7 @@
     {
       "content": "앨리스는 하트 잭의 재판에 참석했어요. 잭은 여왕의 타르트를 훔쳤대요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page20.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page20.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00309_.png",
@@ -237,6 +257,7 @@
     {
       "content": "\"말도 안돼!\" 앨리스가 소리쳤어요. 그러자 모두가 놀랐어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page21.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page21.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00313_.png",
@@ -248,6 +269,7 @@
     {
       "content": "\"감옥에 가둬라!\" 하트 여왕이 외쳤지만, 앨리스는 이제 두렵지 않았어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page22.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page22.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00317_.png",
@@ -259,6 +281,7 @@
     {
       "content": "갑자기 모든 카드들이 앨리스를 향해 날아왔어요.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page23.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page23.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00324_.png",
@@ -270,6 +293,7 @@
     {
       "content": "앨리스는 잠에서 깨어났어요. 모든 것은 꿈이었답니다.",
       "image_url": "https://www.fititstyle.com/static/tale_images/alice/bg/page24.png",
+      "voice_url": "https://www.fititstyle.com/static/tale_images/alice/voice/page24.mp3",
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00328_.png",
