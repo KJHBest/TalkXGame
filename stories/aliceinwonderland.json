@@ -15,8 +15,8 @@
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00244_.png",
-          "position-x": 100,
-          "position-y": 150
+          "position-x": 0,
+          "position-y": 0
         }
       ]
     },
@@ -26,8 +26,8 @@
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00247_.png",
-          "position-x": 280,
-          "position-y": 180
+          "position-x": 0,
+          "position-y": 0
         }
       ]
     },
@@ -37,8 +37,8 @@
       "character": [
         {
           "url": "https://www.fititstyle.com/static/tale_images/alice/character/Image_00251_.png",
-          "position-x": 200,
-          "position-y": 200
+          "position-x": 0,
+          "position-y": 0
         }
       ]
     },
